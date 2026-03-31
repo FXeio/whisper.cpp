@@ -26,6 +26,10 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 COPY --from=build /app/build/bin/ /usr/local/bin/
+COPY --from=build /app/build/src/libwhisper.so* /usr/local/lib/
+COPY --from=build /app/build/ggml/src/libggml*.so* /usr/local/lib/
+RUN ldconfig
+
 COPY --from=build /app/models/download-ggml-model.sh /app/models/
 
 ENV WHISPER_MODEL=tiny
