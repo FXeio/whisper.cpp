@@ -38,4 +38,4 @@ ENV WHISPER_THREADS=4
 EXPOSE 8080
 
 ENTRYPOINT [ "bash", "-c" ]
-CMD ["/app/models/download-ggml-model.sh ${WHISPER_MODEL} /models && whisper-server --model /models/ggml-${WHISPER_MODEL}.bin --host 0.0.0.0 --port 8080 --inference-path /v1/audio/transcriptions --threads ${WHISPER_THREADS} --processors 1 --convert"]
+CMD ["/app/models/download-ggml-model.sh ${WHISPER_MODEL} /models && whisper-server --model /models/ggml-${WHISPER_MODEL}.bin --host 0.0.0.0 --port 8080 --inference-path /v1/audio/transcriptions --threads ${WHISPER_THREADS} --processors 1 --convert --no-gpu"]
