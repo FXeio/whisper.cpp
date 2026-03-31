@@ -8,11 +8,14 @@ RUN apt-get update && \
 
 COPY . .
 
+ENV CFLAGS="-march=goldmont-plus"
+ENV CXXFLAGS="-march=goldmont-plus"
 RUN cmake -B build \
     -DGGML_AVX=OFF \
     -DGGML_AVX2=OFF \
     -DGGML_FMA=OFF \
     -DGGML_F16C=OFF \
+    -DGGML_BMI2=OFF \
     -DGGML_NATIVE=OFF \
     -DCMAKE_C_FLAGS="-march=goldmont-plus" \
     -DCMAKE_CXX_FLAGS="-march=goldmont-plus" \
