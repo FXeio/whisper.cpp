@@ -14,6 +14,8 @@ RUN cmake -B build \
     -DGGML_FMA=OFF \
     -DGGML_F16C=OFF \
     -DGGML_NATIVE=OFF \
+    -DCMAKE_C_FLAGS="-march=goldmont-plus" \
+    -DCMAKE_CXX_FLAGS="-march=goldmont-plus" \
     -DCMAKE_BUILD_TYPE=Release && \
     cmake --build build -j$(nproc)
 
